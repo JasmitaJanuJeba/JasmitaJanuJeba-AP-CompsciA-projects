@@ -1,63 +1,51 @@
 package math;
 
-class Math {
+public class Math {   
+        public static void main(String[] args) {
 
-    public static void main(String[] args) {
+       
+        System.out.println("Hello world!");
+        System.out.println("Hi! I'm Jasmita");
+        System.out.print("I'm Coding!");
 
-    //Use the // to create single line comments to either add info or to take out code for debugging
+        
+        //int age = 17;
+        //int temperature = 70; 
+        //int howMany = 0;
 
-    System.out.println("Hello world!");
+        //double price = 14.39;
+        //double pi = 3.14159;
+        //double temp = -41.7;
 
-    //We will be using System.out.println and System.out.print throughout the year. Try using both below to see what the difference is!
+        //boolean amICriminal = false;
+        //boolean amIAGirl = true;
 
+       
+        //int numberOfBooks = 14;
+        //double accountBalance = 14.5;
+        //boolean isAwesome = true;
 
+       
 
+       
+        System.out.println("Odd integers from 1 to 100:");
+        for (int i = 1; i <= 100; i += 2) {
+            System.out.print(i + " ");
+        }
+        System.out.println(); 
 
+        
+        System.out.println("Multiples of 3 from 1 to 100:");
+        for (int i = 3; i <= 100; i += 3) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
 
-
-    //ANSWER:
-
-
-
-    //Throughout the year this year we will need to store information. For that we will be using VARIABLES!
-
-    //Java is an Object-Oriented programming language. All variables we use this year will either be OBJECTS or PRIMITIVES
-
-    //There are 8 primitives in Java: int, byte, short, long, float, double, boolean, char
-
-    //For AP we need to know: int, double, boolean
-
-    //List examples of the types below and give definition
-    //int (integer):
-    //double:
-    //boolean:
-
-    //For now we are just going to work with primitive
-
-    //Create 3 variables of each of the above types (USE GOOD CODING PRACTICE WHEN CREATING THE VARIABLES
-
-
-
-
-
-    //MATH TIME!
-
-    //What are the math operators that we can use?
-    //+ - * / %
-
-    //Try doing some math operations with numbers. How can we check to see if the math worked?
-
-    //Create codes that will print the following:
-
-    //Odd integers from 1 to 100, inclusive of both
-
-
-
-    //All multiples of 3 from 1 to 100
-
-
-
-
-    //Starting at 1000, print on the same line (with a - [hypthen] between each) all of the numbers that end in 0 going down to 0
-  }
+        
+        System.out.println("Numbers ending in 0 from 1000 to 0:");
+        for (int i = 1000; i >= 0; i -= 10) {
+            System.out.print(i + " ");
+        }
+        System.out.println(); 
+    }
 }
