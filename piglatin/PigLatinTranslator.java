@@ -28,15 +28,33 @@ public class PigLatinTranslator {
 
     private static String translateWord(String input) {
         System.out.println("  -> translateWord('" + input + "')");
+       String vowels = "aeiouAEIOU";
+       String result = "";
 
-        String result = "";
+       //Check if first letter is a vowel 
+       if (vowels.indexOf(input.charAt(0)) != -1){
+        //Word starts with a vowel
+        result = input + "ay";
+       }
+       else {
+        int firstVowelIndex = -1;
+        //Find the index of the first vowel in the word
+        for (int i = 0; i < input.length(); i++){
+            if (vowels.indexOf(input.charAt(i)) !=-1){
+                firstVowelIndex = i;
+                break;
+            }
+        }
 
-        // TODO: Replace this code to correctly translate a single word.
-        // Start here first!
-        // This is the first place to work.
-        result = input; // delete this line
-
+        if (firstVowelIndex == -1){
+            result = input+ "ay";
+        }
+        else {
+            result = input.substring(firstVowelIndex) + input.substring(0, firstVowelIndex) + "ay";
+        }
+       }
         return result;
+       
     }
 
     // Add additonal private methods here.
