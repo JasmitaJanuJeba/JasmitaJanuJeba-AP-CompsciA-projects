@@ -27,34 +27,82 @@ public class PigLatinTranslator {
     }
 
     private static String translateWord(String input) {
-        System.out.println("  -> translateWord('" + input + "')");
-       String vowels = "aeiouAEIOU";
-       String result = "";
+    System.out.println("  -> translateWord('" + input + "')");
 
-       //Check if first letter is a vowel 
-       if (vowels.indexOf(input.charAt(0)) != -1){
-        //Word starts with a vowel
-        result = input + "ay";
-       }
-       else {
+    if (input == null || input.trim().isEmpty()) {
+        return "";
+    }
+
+    input = input.trim();
+    String vowels = "aeiouAEIOU";
+    String punctuation = "";
+
+    // Handle punctuation
+    if (!Character.isLetter(input.charAt(input.length() - 1))) {
+        punctuation = String.valueOf(input.charAt(input.length() - 1));
+        input = input.substring(0, input.length() - 1);
+    }
+
+    // Store capitalization pattern
+    boolean[] isUpper = new boolean[input.length()];
+    for (int i = 0; i < input.length(); i++) {
+        isUpper[i] = Character.isUpperCase(input.charAt(i));
+    }
+
+    String lower = input.toLowerCase();
+    String result;
+
+    // Pig Latin logic
+    if (vowels.indexOf(lower.charAt(0)) != -1) {
+        result = lower + "ay";
+    } else {
         int firstVowelIndex = -1;
-        //Find the index of the first vowel in the word
-        for (int i = 0; i < input.length(); i++){
-            if (vowels.indexOf(input.charAt(i)) !=-1){
+        for (int i = 0; i < lower.length(); i++) {
+            if (vowels.indexOf(lower.charAt(i)) != -1) {
                 firstVowelIndex = i;
                 break;
             }
         }
+        if (firstVowelIndex == -1) {
+            result = lower + "ay";
+        } else {
+            result = lower.substring(firstVowelIndex) + lower.substring(0, firstVowelIndex) + "ay";
+        }
+    }
 
-        if (firstVowelIndex == -1){
-            result = input+ "ay";
+    // Reapply capitalization pattern to the part that came from the original word
+    StringBuilder cased = new StringBuilder(result);
+    int lettersOnly = Math.min(isUpper.length, result.length() - 2); // exclude "ay"
+    for (int i = 0; i < lettersOnly; i++) {
+        if (isUpper[i]) {
+            cased.setCharAt(i, Character.toUpperCase(cased.charAt(i)));
+        } else {
+            cased.setCharAt(i, Character.toLowerCase(cased.charAt(i)));
         }
-        else {
-            result = input.substring(firstVowelIndex) + input.substring(0, firstVowelIndex) + "ay";
+    }
+
+    
+
+    return cased.toString() + punctuation;
+}
+
+    private static String translate(String sentence){
+        System.out.println(" ->translate('" + sentence + "')");
+
+        if (sentence == null || sentence.trim().isEmpty()){
+           return "";
         }
-       }
-        return result;
-       
+
+        String[] words = sentence.split("\\s+");
+        StringBuilder translated = new StringBuilder();
+
+        for(int i = 0; i< words.length; i++){
+            translated.append(translateWord(words[i]));
+            if (i<words.length - 1){
+               translated.append(" ");
+            }
+        }
+        return translated.toString();
     }
 
     // Add additonal private methods here.
