@@ -29,17 +29,23 @@ public class App {
         if (score > 4)
         {
             // Starter book
+    
+
             Book input = new Book();
+            input.readFromUrl("Romeo and Juliet", "https://www.gutenberg.org/cache/epub/1513/pg1513.txt");
+            Book output = PigLatinTranslator.translate(input);
+            output.writeToFile("RomeoAndJuliet_PigLatin.txt");
+            System.out.println("Translated book saved as RomeoAndJuliet_PigLatin.txt");
 
-            // Start with a "test" book based on a string.
-            // Get this to work, and all the tests to pass first.
-            input.readFromString("TestBook", "Dog\nCat\nMouse");
+            Book input2 = new Book();
+            input2.readFromUrl("Frankenstein", "https://www.gutenberg.org/cache/epub/84/pg84.txt");
+            Book output2 = PigLatinTranslator.translate(input2);
+            output2.writeToFile("Frankenstein_PigLatin.txt");
+            System.out.println("Translated book saved as Frankenstein_PigLatin.txt");
 
-            // Example reading from a URL
-            //input.readFromUrl("Romeo and Juliette", "https://gutenberg.pglaf.org/cache/epub/1513/pg1513.txt");
+
 
             input.printlines(0,2);
-            Book output = PigLatinTranslator.translate(input);
             output.printlines(0,2);
             output.writeToFile("test.txt");
         }
