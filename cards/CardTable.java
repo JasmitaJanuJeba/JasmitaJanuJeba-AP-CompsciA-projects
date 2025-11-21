@@ -26,29 +26,31 @@ public class CardTable {
         Boolean play = true;
         while (play)
         {
-            // Get input
             System.out.println("Enter a command: (q to quit)");
             input = keyboard.nextLine();
 
-            // Check for exit condition
             if (input.length() > 0)
             {
                 String command = input.substring(0, 1);
+
                 if (command.equals("q"))
                 {
                     play = false;
                     continue;
                 }
-                else if (command.equals("r")) {
-                    // Reset
+                else if (command.equals("r"))
+                {
+                    deck.shuffle();
                     game = new Game(deck);
+                    game.printRules();
+                    game.next();
                 }
-                else {
-                    // Play on!
+                else
+                {
                     boolean result = game.takeTurn(command);
-                    if (result == false)
+                    if (!result)
                     {
-                        System.out.println("\n");
+                        System.out.println("\nNew hand!\n");
                         game.next();
                     }
                 }

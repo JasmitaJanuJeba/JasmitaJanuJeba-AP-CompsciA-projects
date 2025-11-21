@@ -1,25 +1,19 @@
 package cards;
 
 public class Card {
+    private String rank;
+    private String suit;
+    private int value;
 
-//instance variables
-private int suit;
-private int value;
-private static String[] SUITS = {"♦","♥","♣","♠"};
-private static String[] VALUE = {"A","2","3","4","5","6","7","8","9","10","K","Q","J"};
+    public Card(String r, String s, int v) {
+        rank = r;
+        suit = s;
+        value = v;
+    }
 
-//constructor
-public Card(int suit, int value){
-    this.suit = suit;
-    this.value = value;
-}
+    public int getValue() { return value; }
 
-//methods 
-public int getValue(){
-    return value;
-}
-public String toString(){
-    return " "+SUITS[suit]+VALUE[value];
-}
-
+    public String toString() {
+        return rank + " of " + suit;
+    }
 }
