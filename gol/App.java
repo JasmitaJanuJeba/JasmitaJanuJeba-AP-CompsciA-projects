@@ -1,7 +1,7 @@
 package gol;
 
 public class App {
-
+ // Game of life
     public static void main(String[] args)
     {
         // GameOfLife g = new GameOfLife(7, 7);
